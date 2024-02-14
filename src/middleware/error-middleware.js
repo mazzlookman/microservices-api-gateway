@@ -2,6 +2,7 @@
 const errorMiddleware = async (err, req, res, next) => {
     if (!err) {
         next();
+
         return;
     }
 
@@ -13,8 +14,8 @@ const errorMiddleware = async (err, req, res, next) => {
         }).end();
     }
 
-    // const {status, data} = ;
-    return res.status(err.response.status).json(err.response.data).end();
+    const {status, data} = err.response;
+    return res.status(status).json(data).end();
 }
 
 export {
