@@ -100,9 +100,22 @@ const update = async (req, res, next) => {
     }
 }
 
+const getUser = async (req, res, next) => {
+    try {
+        const id = req.user.data.id
+        const user = await axios.get(`/users/${id}`)
+
+        return res.json(user.data)
+
+    } catch (e) {
+        next(e)
+    }
+}
+
 export default {
     register,
     login,
     refreshToken,
-    update
+    update,
+    getUser
 }

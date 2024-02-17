@@ -10,3 +10,4 @@ userRouter.post("/refresh-token", userController.refreshToken)
 
 userRouter.use(jwtAuthMiddleware)
 userRouter.patch("/:id", userController.update)
+userRouter.get("/:id", userController.getUser)

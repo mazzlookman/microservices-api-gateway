@@ -1,7 +1,7 @@
 import supertest from "supertest";
 import {web} from "../../src/app/web.js";
 
-const authHeader = {
+export const authHeader = {
     "Authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoyLCJuYW1lIjoiVWN1cCIsImVtYWlsIjoidWN1cEB0ZXN0LmNvbSIsInByb2Zlc3Npb24iOiJGcm9udGVuZCIsImF2YXRhciI6InVjdXAucG5nIiwicm9sZSI6InN0dWRlbnQifSwiaWF0IjoxNzA4MTczOTM4LCJleHAiOjE3MDgxNzc1Mzh9.NeBWaO9QP_Q4Jgfpsfw2jEiJZXx7aci1MeP-sOyqU6A",
 }
 describe("User Service: Update user endpoint testing", () => {
