@@ -15,6 +15,6 @@ web.use(express.json());
 web.use("/media", mediaRouter);
 
 // user-service router
-web.use(userRouter);
+web.use("/users", userRouter);
 
 web.use(errorMiddleware);

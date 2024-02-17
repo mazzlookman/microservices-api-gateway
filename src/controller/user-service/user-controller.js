@@ -88,10 +88,21 @@ const refreshToken = async (req, res, next) => {
     }
 }
 
+const update = async (req, res, next) => {
+    try {
+        const id = req.user.data.id
+        const update = await axios.patch(`/users/${id}`, req.body)
 
+        return res.json(update.data)
+
+    } catch (e) {
+        next(e)
+    }
+}
 
 export default {
     register,
     login,
-    refreshToken
+    refreshToken,
+    update
 }

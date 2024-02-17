@@ -41,9 +41,6 @@ const errorMiddleware = async (err, req, res, next) => {
         }).end()
     }
 
-    // const {status, data} = err.response;
-    // return res.status(status).json(data)
-    //     .end();
 }
 
 export {
