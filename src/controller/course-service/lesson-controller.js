@@ -2,8 +2,8 @@ import {newAxios} from "./axios-adapter.js";
 
 const create = async (req, res, next) => {
     try {
-        const chapter = await newAxios.post("/api/chapters", req.body)
-        return res.json(chapter.data)
+        const lesson = await newAxios.post("/api/lessons", req.body)
+        return res.json(lesson.data)
     } catch (e) {
         next(e)
     }
@@ -11,8 +11,8 @@ const create = async (req, res, next) => {
 
 const update = async (req, res, next) => {
     try {
-        const chapter = await newAxios.patch(`/api/chapters/${req.params.id}`, req.body)
-        return res.json(chapter.data)
+        const lesson = await newAxios.patch(`/api/lessons/${req.params.id}`, req.body)
+        return res.json(lesson.data)
     } catch (e) {
         next(e)
     }
@@ -20,8 +20,8 @@ const update = async (req, res, next) => {
 
 const getById = async (req, res, next) => {
     try {
-        const chapter = await newAxios.get(`/api/chapters/${req.params.id}`)
-        return res.json(chapter.data)
+        const lesson = await newAxios.get(`/api/lessons/${req.params.id}`)
+        return res.json(lesson.data)
     } catch (e) {
         next(e)
     }
@@ -29,13 +29,12 @@ const getById = async (req, res, next) => {
 
 const getAll = async (req, res, next) => {
     try {
-        const chapters = await newAxios.get("/api/chapters", {
+        const lessons = await newAxios.get(`/api/lessons`, {
             params: {
                 ...req.query
             }
         })
-
-        return res.json(chapters.data)
+        return res.json(lessons.data)
     } catch (e) {
         next(e)
     }
@@ -43,8 +42,8 @@ const getAll = async (req, res, next) => {
 
 const remove = async (req, res, next) => {
     try {
-        const chapter = await newAxios.delete(`/api/chapters/${req.params.id}`)
-        return res.json(chapter.data)
+        const lesson = await newAxios.delete(`/api/lessons/${req.params.id}`)
+        return res.json(lesson.data)
     } catch (e) {
         next(e)
     }

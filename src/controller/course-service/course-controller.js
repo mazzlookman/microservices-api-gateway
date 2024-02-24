@@ -2,7 +2,7 @@ import {newAxios} from "./axios-adapter.js";
 
 const remove = async (req, res, next) => {
     try {
-        const remove = await newAxios.delete(`/courses/${req.params.id}`)
+        const remove = await newAxios.delete(`/api/courses/${req.params.id}`)
         return res.json(remove.data)
     } catch (e) {
         next(e)
@@ -11,7 +11,7 @@ const remove = async (req, res, next) => {
 
 const getAll = async (req, res, next) => {
     try {
-        const courses = await newAxios.get(`/courses`, {
+        const courses = await newAxios.get(`/api/courses`, {
             params: {
                 ...req.query,
                 status: "published"
@@ -50,7 +50,7 @@ const getAll = async (req, res, next) => {
 
 const getById = async (req, res, next) => {
     try {
-        const course = await newAxios.get(`/courses/${req.params.id}`)
+        const course = await newAxios.get(`/api/courses/${req.params.id}`)
         return res.json(course.data)
     } catch (e) {
         next(e)
@@ -59,7 +59,7 @@ const getById = async (req, res, next) => {
 
 const update = async (req, res, next) => {
     try {
-        const course = await newAxios.patch(`/courses/${req.params.id}`, req.body)
+        const course = await newAxios.patch(`/api/courses/${req.params.id}`, req.body)
         return res.json(course.data)
     } catch (e) {
         next(e)
@@ -68,7 +68,7 @@ const update = async (req, res, next) => {
 
 const create = async (req, res, next) => {
     try {
-        const course = await newAxios.post("/courses", req.body)
+        const course = await newAxios.post("/api/courses", req.body)
         return res.json(course.data)
     } catch (e) {
         next(e)
