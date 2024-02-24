@@ -57,7 +57,7 @@ const refreshToken = async (req, res, next) => {
         const email = req.body.email
 
         if (!r_token || !email) {
-            ErrorUserService(JsonWebTokenError, "Invalid token euy")
+            ErrorUserService(JsonWebTokenError, "Ups! Invalid token")
         }
             // throw new JsonWebTokenError("")
 
