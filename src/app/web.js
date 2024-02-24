@@ -11,6 +11,7 @@ import {chapterRouter} from "../router/course-service/chapter-router.js";
 import {lessonRouter} from "../router/course-service/lesson-router.js";
 import {imageCourseRouter} from "../router/course-service/image-course-router.js";
 import {myCourseRouter} from "../router/course-service/my-course-router.js";
+import {reviewRouter} from "../router/course-service/review-router.js";
 
 export const web = express();
 
@@ -41,5 +42,8 @@ web.use("/api/image-courses", imageCourseRouter)
 
 // my-course router
 web.use("/api/my-courses", myCourseRouter)
+
+// review router
+web.use("/api/reviews", reviewRouter)
 
 web.use(errorMiddleware);
