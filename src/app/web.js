@@ -12,6 +12,7 @@ import {lessonRouter} from "../router/course-service/lesson-router.js";
 import {imageCourseRouter} from "../router/course-service/image-course-router.js";
 import {myCourseRouter} from "../router/course-service/my-course-router.js";
 import {reviewRouter} from "../router/course-service/review-router.js";
+import {orderPaymentRouter} from "../router/order-payment-service/order-payment-router.js";
 
 export const web = express();
 
@@ -45,5 +46,9 @@ web.use("/api/my-courses", myCourseRouter)
 
 // review router
 web.use("/api/reviews", reviewRouter)
+
+// order-payment router
+// webhook for midtrans
+web.use("/api", orderPaymentRouter)
 
 web.use(errorMiddleware);
