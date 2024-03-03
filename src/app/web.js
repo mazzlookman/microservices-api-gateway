@@ -4,7 +4,6 @@ import logger from "morgan";
 import {errorMiddleware} from "../middleware/error-middleware.js";
 import {mediaRouter} from "../router/media-service/media-router.js";
 import {userRouter} from "../router/user-service/user-router.js";
-import {jwtAuthMiddleware} from "../middleware/jwt-auth-middleware.js";
 import {mentorRouter} from "../router/course-service/mentor-router.js";
 import {courseRouter} from "../router/course-service/course-router.js";
 import {chapterRouter} from "../router/course-service/chapter-router.js";
