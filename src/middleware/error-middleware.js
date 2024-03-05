@@ -12,17 +12,21 @@ const errorMiddleware = async (err, req, res, next) => {
 
     if (err.code === "ECONNREFUSED"){
         return res.status(503).json({
-            "code": 503,
-            "status": "Service Unavailable",
-            "message": "Ups. something is wrong",
+            code: 503,
+            status: "Service Unavailable",
+            errors: {
+                message: "Ups. something is wrong",
+            }
         }).end()
     }
 
     if (err instanceof JsonWebTokenError) {
         return res.status(401).json({
-            "code": 401,
-            "status": "Unauthorized",
-            "message": err.message,
+            code: 401,
+            status: "Unauthorized",
+            errors: {
+                message: err.message,
+            }
         }).end()
     }
 
@@ -35,9 +39,11 @@ const errorMiddleware = async (err, req, res, next) => {
 
     else {
         return res.status(500).json({
-            "code": 500,
-            "status": "Internal Server Error",
-            "message": err.message,
+            code: 500,
+            status: "Internal Server Error",
+            errors: {
+                message: err.message,
+            }
         }).end()
     }
 
