@@ -5,7 +5,7 @@ const {JsonWebTokenError} = jwt;
 
 const register = async (req, res, next) => {
     try {
-        const register = await axios.post("/users", req.body);
+        const register = await axios.post("/api/users", req.body);
         return res.json(register.data)
     } catch (e) {
         next(e)
@@ -14,7 +14,7 @@ const register = async (req, res, next) => {
 
 const login = async (req, res, next) => {
     try {
-        const login = await axios.post("/users/login", req.body)
+        const login = await axios.post("/api/users/login", req.body)
         const user = login.data.data
 
         const token = jwt.sign(
@@ -28,7 +28,7 @@ const login = async (req, res, next) => {
             process.env.JWT_SECRET_KEY_REFRESH
         )
 
-        await axios.post("/refresh-token", {
+        await axios.post("/api/refresh-token", {
             token: refreshToken,
             user_id: user.id
         })
@@ -61,7 +61,7 @@ const refreshToken = async (req, res, next) => {
         }
             // throw new JsonWebTokenError("")
 
-        await axios.get("/refresh-token",{params: {token: r_token}})
+        await axios.get("/api/refresh-token",{params: {token: r_token}})
 
         jwt.verify(r_token, process.env.JWT_SECRET_KEY_REFRESH, (err, decoded) => {
             if (email !== decoded.data.email) {
@@ -91,7 +91,7 @@ const refreshToken = async (req, res, next) => {
 const update = async (req, res, next) => {
     try {
         const id = req.user.data.id
-        const update = await axios.patch(`/users/${id}`, req.body)
+        const update = await axios.patch(`/api/users/${id}`, req.body)
 
         return res.json(update.data)
 
@@ -103,7 +103,7 @@ const update = async (req, res, next) => {
 const getUser = async (req, res, next) => {
     try {
         const id = req.user.data.id
-        const user = await axios.get(`/users/${id}`)
+        const user = await axios.get(`/api/users/${id}`)
 
         return res.json(user.data)
 

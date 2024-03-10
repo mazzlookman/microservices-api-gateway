@@ -15,14 +15,14 @@ import {orderPaymentRouter} from "../router/order-payment-service/order-payment-
 
 export const web = express();
 
-web.use(logger("dev"));
+web.use(logger(process.env.LOG_FORMAT));
 web.use(express.json());
 
 // media-service router
-web.use("/media", mediaRouter);
+web.use("/api/media", mediaRouter);
 
 // user-service router
-web.use("/users", userRouter);
+web.use("/api/users", userRouter);
 
 // course-service
 // mentor router

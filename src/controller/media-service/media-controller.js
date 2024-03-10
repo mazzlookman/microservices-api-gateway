@@ -5,7 +5,7 @@ const axios = apiAdapter(env.MEDIA_SERVICE_URL);
 
 const create = async (req, res, next) => {
     try {
-        const media = await axios.post("/media", req.body);
+        const media = await axios.post("/api/media", req.body);
         return res.json(media.data);
     } catch (err) {
         next(err);
@@ -14,7 +14,7 @@ const create = async (req, res, next) => {
 
 const getAll = async (req, res, next) => {
     try {
-        const media = await axios.get("/media");
+        const media = await axios.get("/api/media");
         return res.json(media.data);
     } catch (err) {
         next(err);
@@ -23,7 +23,7 @@ const getAll = async (req, res, next) => {
 
 const remove = async (req, res, next) => {
     try {
-        const media = await axios.delete(`/media/${req.params.id}`);
+        const media = await axios.delete(`/api/media/${req.params.id}`);
         return res.json(media.data);
     } catch (err) {
         next(err);

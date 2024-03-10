@@ -23,7 +23,7 @@ const getAll = async (req, res, next) => {
         const firstPage = coursesData.data.first_page_url.split("?").pop()
         const lastPage = coursesData.data.last_page_url.split("?").pop()
 
-        const hostname = `${process.env.HOSTNAME}/api/courses`
+        const hostname = `${process.env.HOSTNAME_URL}/api/courses`
         coursesData.data.first_page_url = `${hostname}?${firstPage}`
         coursesData.data.last_page_url = `${hostname}?${lastPage}`
 
